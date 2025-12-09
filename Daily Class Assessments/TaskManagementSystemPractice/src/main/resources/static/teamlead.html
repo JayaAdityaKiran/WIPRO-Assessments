@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TeamLead Dashboard</title>
+</head>
+<body>
+
+<h2>TEAMLEAD DASHBOARD</h2>
+<p>Welcome, <span id="user"></span></p>
+<button onclick="logout()">Logout</button>
+<hr>
+
+<!-- CREATE TASK -->
+<h3>Create Task</h3>
+Title: <input type="text" id="title"><br><br>
+Description: <input type="text" id="desc"><br><br>
+
+Assign To:
+<select id="sdSelect"></select><br><br>
+
+<button onclick="createTask()">Create Task</button>
+<hr>
+
+<!-- ALL TASKS -->
+<h3>All Tasks</h3>
+<table border="1" width="80%">
+    <thead>
+        <tr>
+            <th>ID</th><th>Title</th><th>Description</th>
+            <th>Assigned To</th><th>Status</th><th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="taskTable"></tbody>
+</table>
+
+<!-- EDIT POPUP -->
+<div id="editBox" style="display:none; padding:20px; border:2px solid black; width:300px; background:#f3f3f3;">
+    <h3>Edit Task</h3>
+
+    <input type="hidden" id="editId">
+
+    Title: <input type="text" id="editTitle"><br><br>
+    Description: <input type="text" id="editDesc"><br><br>
+
+    Assigned To:
+    <select id="editSdSelect"></select><br><br>
+
+    Status:
+    <select id="editStatus">
+        <option value="PENDING">PENDING</option>
+        <option value="IN_PROGRESS">IN_PROGRESS</option>
+        <option value="COMPLETED">COMPLETED</option>
+    </select><br><br>
+
+    <button onclick="saveUpdate()">Save</button>
+    <button onclick="closeEdit()">Cancel</button>
+</div>
+
+<script>
+document.getElementById("user").innerText = localStorage.getItem("username");
+let token = localStorage.getItem("token");
+
+//Logout
+function logout(){
+    localStorage.clear();
+    location.href = "login.html";
+}
+
+//Load SD Users for BOTH create & edit dropdowns
+async function loadSD(){
+    let res = await fetch("http://localhost:8080/api/user/sd", {
+        headers: {"Authorization": "Bearer " + token}
+    });
+    let users = await res.json();
+
+    sdSelect.innerHTML = "";
+    editSdSelect.innerHTML = "";
+
+    users.forEach(u =>{
+        sdSelect.innerHTML += `<option value="${u.username}">${u.username}</option>`;
+        editSdSelect.innerHTML += `<option value="${u.username}">${u.username}</option>`;
+    });
+}
+
+//Create Task
+async function createTask(){
+    let task = {
+        title: title.value,
+        description: desc.value,
+        assignedTo: sdSelect.value
+    };
+
+    await fetch("http://localhost:8080/api/teamlead/create", {
+        method: "POST",
+        headers:{
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(task)
+    });
+
+    loadTasks();
+}
+
+//Load Tasks
+async function loadTasks(){
+    let res = await fetch("http://localhost:8080/api/teamlead/tasks", {
+        headers: {"Authorization":"Bearer "+token}
+    });
+
+    let tasks = await res.json();
+    taskTable.innerHTML = "";
+
+    tasks.forEach(t =>{
+        taskTable.innerHTML += `
+            <tr>
+                <td>${t.id}</td>
+                <td>${t.title}</td>
+                <td>${t.description}</td>
+                <td>${t.assignedTo}</td>
+                <td>${t.status}</td>
+                <td>
+                    <button onclick="openEdit(${t.id}, '${t.title}', '${t.description}', '${t.assignedTo}', '${t.status}')">Edit</button>
+                    <button onclick="deleteTask(${t.id})">Delete</button>
+                </td>
+            </tr>`;
+    });
+}
+
+//Open Edit Popup
+function openEdit(id, title, desc, assignedTo, status){
+    editBox.style.display = "block";
+    editId.value = id;
+    editTitle.value = title;
+    editDesc.value = desc;
+    editSdSelect.value = assignedTo;
+    editStatus.value = status;
+}
+
+//Close Popup
+function closeEdit(){
+    editBox.style.display = "none";
+}
+
+//Save Update
+async function saveUpdate(){
+    let id = editId.value;
+
+    let updatedTask = {
+        title: editTitle.value,
+        description: editDesc.value,
+        assignedTo: editSdSelect.value,
+        status: editStatus.value
+    };
+
+    await fetch("http://localhost:8080/api/teamlead/update/" + id, {
+        method: "PUT",
+        headers:{
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedTask)
+    });
+
+    closeEdit();
+    loadTasks();
+}
+
+//Delete Task
+async function deleteTask(id){
+    await fetch("http://localhost:8080/api/teamlead/delete/" + id,{
+        method:"DELETE",
+        headers:{"Authorization":"Bearer "+token}
+    });
+    loadTasks();
+}
+
+loadSD();
+loadTasks();
+</script>
+
+</body>
+</html>

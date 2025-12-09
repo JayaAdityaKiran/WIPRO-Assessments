@@ -1,0 +1,17 @@
+package com.example.repository;
+
+import com.example.model.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
+
+    List<Task> findByAssignedBy(String assignedBy);
+
+    List<Task> findByAssignedTo(String assignedTo);
+
+    boolean existsByTitleAndAssignedBy(String title, String assignedBy);
+}

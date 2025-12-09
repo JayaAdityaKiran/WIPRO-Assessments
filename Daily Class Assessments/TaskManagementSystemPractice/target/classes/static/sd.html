@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head><title>SD Dashboard</title></head>
+<body>
+
+<h2>SD DASHBOARD</h2>
+<p>Welcome, <span id="user"></span></p>
+<button onclick="logout()">Logout</button>
+
+<hr>
+<h3>My Tasks</h3>
+
+<table border="1" width="80%">
+    <thead>
+        <tr>
+            <th>ID</th><th>Title</th><th>Status</th><th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="taskTable"></tbody>
+</table>
+
+<script>
+let token = localStorage.getItem("token");
+let username = localStorage.getItem("username");
+user.innerText = username;
+
+function logout(){
+    localStorage.clear();
+    location.href = "login.html";
+}
+
+async function loadMyTasks(){
+    let res = await fetch("http://localhost:8080/api/sd/tasks", {
+        headers: {"Authorization":"Bearer "+token}
+    });
+
+    let tasks = await res.json();
+    taskTable.innerHTML = "";
+
+    tasks.forEach(t =>{
+        taskTable.innerHTML += `
+            <tr>
+                <td>${t.id}</td>
+                <td>${t.title}</td>
+                <td>${t.status}</td>
+                <td>
+                    <button onclick="updateStatus(${t.id}, 'IN_PROGRESS')">IN_PROGRESS</button>
+                    <button onclick="updateStatus(${t.id}, 'COMPLETED')">COMPLETED</button>
+                </td>
+            </tr>`;
+    });
+}
+
+async function updateStatus(taskId, status){
+    await fetch(`http://localhost:8080/api/sd/status/${taskId}/${status}`, {
+        method:"PUT",
+        headers: {"Authorization":"Bearer "+token}
+    });
+    loadMyTasks();
+}
+
+loadMyTasks();
+</script>
+
+</body>
+</html>

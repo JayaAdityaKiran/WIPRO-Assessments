@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+
+<h2>Register</h2>
+
+<form id="regForm">
+    Username: <input type="text" id="username"><br><br>
+    Password: <input type="password" id="password"><br><br>
+
+    Role:
+    <select id="role">
+        <option value="TEAMLEAD">Team Lead</option>
+        <option value="SD">Software Developer</option>
+    </select><br><br>
+
+    <button type="submit">Register</button>
+</form>
+
+<p id="msg" style="color:green;"></p>
+
+<script>
+document.getElementById("regForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    let user = {
+        username: username.value,
+        password: password.value,
+        role: role.value
+    };
+
+    let res = await fetch("http://localhost:8080/api/auth/register", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify(user)
+    });
+
+    msg.innerText = await res.text();
+});
+</script>
+
+</body>
+</html>
