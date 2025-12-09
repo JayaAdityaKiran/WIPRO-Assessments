@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- DOM Objects : Document Object Model -- 
+    1. It is programming interface for HTML and XML documents.
+    2. It represents the structure of a web page as a tree of objects that JS can access and modify dynamically.
+    3. DOM Objects : Document, Window, Navigator, History (history.back etc), Location -->
+
+    <h1 id="heading">Welcome All!</h1>
+    <button onclick="changeText()">Click Here</button>
+
+    <script>
+        function changeText(){
+            document.getElementById("heading").innerText = "DOM Example"; // does not need another html page to change the text
+            console.log("Heading is changed using DOM Object");
+            console.log("Current URL",location.href);
+
+            /*
+                ES6+ Features
+
+                1. let, const -- block scoped variables
+                2. arrow function -- const sum = (a,b) => a+b;
+                3. String Interpolation -- ${name} -- Dynamic value to print
+                4. Destcructing -- const{name, age, rollNo} = user;
+                previously we needed to write a function and then add all these in user but now we can do it
+                5. spread operator -- if you want to collect the data in an array when you dont know how many values in it then use [..arr_name]
+
+            */
+        }
+    </script>
+
+</body>
+</html>

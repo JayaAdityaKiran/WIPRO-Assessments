@@ -1,0 +1,48 @@
+<!-- //Activity
+
+/*Suppose you are creating a user registration form for a website , the form should capture
+-UserName
+- Age
+isSubscribe and you need to check whether the provided data matches the expected types
+
+.ValIdate.User Registration Data Types -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <!-- form id is used in java script -->
+    <form id="registrationForm">
+        <h2>User Registration Form</h2>
+
+        <label for="username">User Name : </label>
+        <!-- id or name are used in js but id is unique where as name can be used somewhere else -->
+        <input type="text" id="username" placeholder="Enter Your Name" required>
+        <br><br>
+
+        <label for="age">User Age : </label>
+        <input type="text" id="age" placeholder="Enter Your Age" required>
+        <br><br>
+
+        <label for="isSubscribed">Have you Subscribed to the channel ? </label>
+        <!-- <input type="" id="isSubscribed" placeholder="Subscribed or not" required> -->
+         <select id="isSubscribed">
+            <option selected disabled>-- Select an option --</option> 
+            <!-- disables makes sure that sleect an option cannot be selected  -->
+            <!-- selected --- Makes it the default visible option when the form loads. -->
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+         </select>
+        <br><br>
+        
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <script src="form_validate.js"></script>
+</body>
+</html>

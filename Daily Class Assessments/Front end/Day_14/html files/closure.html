@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Closure --- it is when a function "remembers" the variable from its outer scope, even after that outer function has finished its processing or execution
+
+        function message(){
+            let count = 0;
+            function innerMessage(){
+                count++;
+                console.log("The value of count is : "+count);
+            }
+            return innerMessage;
+        }
+
+        const finalValue = message(); // reference type a variable....not a normal function but a closure function that holds both inner and outer function
+
+        finalValue(); // count = 1
+        finalValue(); // count = 2
+        finalValue(); // count = 3
+
+        // It holds the value where previould it would give count = 1 for every time you call it
+
+        // Closure is the combination of a function and its statements or the values within which that function was declared
+
+    </script>
+</body>
+</html>

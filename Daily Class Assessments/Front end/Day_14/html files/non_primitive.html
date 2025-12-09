@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let colorValues = {}; // It will create an empty object using {}...colorValues is an object 
+
+        let person = {
+            // firstName = "Aditya";
+            // lastName = "Kiran"; ---- wrong way
+
+            firstName : "Aditya",
+            lastName : "Kiran"
+        }
+
+        console.log("The First Username is : ",person.firstName);
+        console.log("The Last Username is : ",person.lastName);
+
+        // console.log("The Username is : ",person[firstName]); 
+
+        person.firstName = "Kapil"; // can change property value
+        console.log("The First Username is : ",person.firstName);
+
+        person.age = 30; // can add new property
+
+        console.log(person); // print the whole object
+
+        console.log("Jaya" in person);
+        console.log("lastName" in person);
+        console.log("age" in person);
+
+        delete person.age; // delete property in the object
+
+        let address = ["Kanpur","Delhi","Mumbai"];
+        const colorCodes = [1,5,2,3];
+        const mixedArray = [ "Hello", 23 , true , {address : "Pune"} ];
+
+        console.log(address[0]);
+        console.log(address)
+
+    </script>
+</body>
+</html>

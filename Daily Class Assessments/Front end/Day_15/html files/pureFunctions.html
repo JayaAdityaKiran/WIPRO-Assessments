@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // traditional method for incrementing the salary
+
+        const salaries = [34000,45000,23000];
+        const newSalaries = [];
+
+        for(let i=0;i<salaries.length;i++){
+            newSalaries.push(salaries[i]+1000);
+        }
+        console.log("New Salaries using traditional method : "+newSalaries);
+
+
+        const highlyPaid = [];
+
+        for(let i=0;i<salaries.length;i++){
+            if(salaries[i] > 25000){
+                highlyPaid.push(salaries[i]);
+            }
+        }
+        console.log("Highly paid employees using traditional method : "+highlyPaid);
+
+
+        let totalSalary = 0;
+        for(let i=0;i<salaries.length;i++){
+            totalSalary = totalSalary + salaries[i]
+        }
+        console.log("Total salaries using traditional method : "+totalSalary);
+
+
+
+        // doing same things as above but by using pure functions --- no index , no pushing , no length required
+
+        // map()
+        const salariesOfEmp = [34000,45000,23000];
+        const newSalariesOfEmp = salariesOfEmp.map(sal => sal+1000); // new array of same length
+        console.log("New Salaries of the Employees using pure functions : "+newSalariesOfEmp);
+
+
+        //filter()
+        const highlyPaidEmp = salariesOfEmp.filter(sal => sal>23000);
+        console.log("Highly paid Employees using pure functions : "+highlyPaidEmp);
+
+
+        //reduce()
+        const total = salariesOfEmp.reduce((sum,sal) => sum+sal , 0);
+        console.log("Total salaries using pure functions : "+total);
+
+    </script>
+</body>
+</html>

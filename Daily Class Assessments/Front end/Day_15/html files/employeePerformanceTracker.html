@@ -1,0 +1,45 @@
+
+<!--Activity : Create a Employee Performance Tracker by calculating Total No. of Years of all Employees , filter grade wise performance and increment the bonus by 30% grade wise   -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Performance Tracker</title>
+</head>
+<body>
+    <script>
+        
+        const employees = [
+        { name: "Aditya", joiningYear: 2015, currentYear: 2025, grade: "A", bonus: 10000 },
+        { name: "ram", joiningYear: 2018, currentYear: 2025, grade: "B", bonus: 8000 },
+        { name: "shyam", joiningYear: 2020, currentYear: 2025, grade: "C", bonus: 7000 },
+        { name: "arjun", joiningYear: 2016, currentYear: 2025, grade: "A", bonus: 12000 },
+        { name: "roshan", joiningYear: 2019, currentYear: 2025, grade: "B", bonus: 9000 }
+        ];
+
+        // => ---- it takes each employee elemnt as an object...just like i in a for loop
+
+        // ...emp meand it takes a copy of the employees array and , total years means that in that copy array theere will be new total years element with value as current - joining
+
+        const withYears = employees.map(emp => ({...emp,totalYears: emp.currentYear - emp.joiningYear}))
+
+        const years = employees.map(emp => emp.currentYear - emp.joiningYear);
+
+        const gradeA = employees.filter(emp => emp.grade === "A");
+
+        const gradeABonus = gradeA.map(emp => emp.bonus * 1.3);
+
+        const totalYears = years.reduce((sum , emp)=>sum + emp,0);
+
+        console.log("All Employees Data : ", employees);
+        console.log("All Employees Data with years : ", years);
+        console.log("Grade A Employees : ", gradeA);
+        console.log("Grade A Employees with bonus upadetd : ", gradeABonus);
+        console.log("Total Employees of all employees : ", totalYears);
+        console.log("Copy Employees Array with new Total Years element : ", withYears);
+
+    </script>
+</body>
+</html>

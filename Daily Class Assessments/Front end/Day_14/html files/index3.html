@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showMessage()">Click Here</button>
+    <script>
+        function showMessage(){
+            alert("New Message Created");
+        }
+        // let user --- cannot access as it is block level 
+        const user = {
+            role : "admin"
+        }
+        if(user.role === "admin"){
+            var accesslevel = "full control";
+        }
+        console.log("The access level of admin is : "+accesslevel);
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+
+<!-- Problem Statement:
+Create a JavaScript program to automate the generation of report cards for students based on their marks in 3 subjects.
+
+Each student's data should be stored as an object, and the entire class should be represented as an array of students.
+
+Requirements:
+
+Add data type validation:
+
+Marks must be numbers (either integers or floats), not strings.
+
+Validate the name:
+
+Ensure the student name is a valid string (not empty or numeric).
+
+Handle invalid data:
+
+Skip invalid records or display appropriate warnings in the console.
+
+Compute and display results:
+
+Calculate the total, average, and grade for each student.
+
+Add extra functionality such as scholarship or allowance for students with high grades.  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card</title>
+</head>
+<body>
+    <script>
+
+    let student_strength = parseInt(prompt("Enter the number of students in the class: "));
+    let students = [];
+    let result = 0;
+    let grade;
+    // let scholarship;
+
+    if (isNaN(student_strength) || student_strength <= 0) {
+        console.warn("Invalid number of students entered!");
+    } else {
+        while (student_strength > 0) {
+            let name = prompt("Enter the name of the student:");
+            if (typeof name !== "string" || name.trim() === "") {
+                console.warn("Invalid name entered!");
+                continue; 
+            }
+
+            let m1 = Number(prompt("Enter the marks " + name + " got in Science:"));
+            if (isNaN(m1)) console.warn("Invalid marks entered for Science!");
+
+            let m2 = Number(prompt("Enter the marks " + name + " got in Maths:"));
+            if (isNaN(m2)) console.warn("Invalid marks entered for Maths!");
+
+            let m3 = Number(prompt("Enter the marks " + name + " got in French:"));
+            if (isNaN(m3)) console.warn("Invalid marks entered for French!");
+
+            result = (m1+m2+m3)/3;
+
+            if(result>=90){
+                grade = "A+";
+            }else if(result>=80){
+                grade = "A";
+            }else if(result>=75){
+                grade = "B+";
+            }else if(result>=70){
+                grade = "B";
+            }else if(result>=65){
+                grade = "C+";
+            }else if(result>=60){
+                grade = "C";
+            }else if(result>=55){
+                grade = "D+";
+            }else if(result>=50){
+                grade = "D";
+            }else{
+                grade = "F";
+            }
+
+            switch(grade){
+                case "A+":
+                    console.log(name + "got 25% Scholarship!");
+                    break;
+                case "A":
+                    console.log(name + "got 10% Scholarship!");
+                    break;
+                case "B+":
+                    console.log(name + "got 5% Scholarship!");
+                    break;
+                default:
+                    console.log(name + "did not get any Scholarship");
+                    break;
+            }
+
+            students.push({ name: name, marks: [m1, m2, m3],result,grade});
+
+            student_strength--;
+            result = 0;
+        }
+    }
+
+    // console.log("Students data:", students);
+
+
+</script>
+
+</body>
+</html>

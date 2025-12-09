@@ -1,0 +1,78 @@
+
+<!-- A company wants to automate monthly salary calculation for employees based on their working days, basic pay, and bonuses.
+
+A script file can be created to perform the following tasks:
+a) Calculate gross salary
+b) Apply tax deductions
+c) Display employee net salary
+
+Add a validation to check that all parameters must be numbers except the employee name.
+After submitting, calculate and display the total net salary. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automate Monthly Salary Calculation</title>
+</head>
+<body>
+    <script>
+        function grossSalary(base_salary , no_working_days , bonus){
+            let daily_salary = base_salary/30;
+            let gross_salary = daily_salary*no_working_days + bonus;
+            return gross_salary;
+        }
+
+        function tax(gross){
+            let tax = 0;
+            if(gross>80000){
+                tax = 0.20;
+            }else if(gross > 60000){
+                tax = 0.15;
+            }else if(gross > 10000){
+                tax = 0.05;
+            }
+            return gross*tax;
+        }
+
+        function netSalary(gross , tax){
+            let net_salary = gross - tax;
+            return net_salary;
+        }
+
+        function final(name,base_salary,no_working_days,bonus){
+
+            if (typeof name !== "string" || name.trim() === "") {
+                console.warn("Invalid name entered!");
+                return;
+            }
+            if (isNaN(base_salary) || isNaN(no_working_days) || isNaN(bonus)) {
+                console.warn("Invalid number entered for salary or days or bonus!");
+                return;
+            }
+
+            let g = grossSalary(base_salary,no_working_days,bonus);
+            let t = tax(g);
+            let n = netSalary(g,t);
+
+            console.log("Name of the Employee : "+name);
+            console.log("Number of days the Employee works for : "+no_working_days);
+            console.log("Monthly Daily Bonus for the Employee : "+bonus);
+            console.log("Base Salary of the Employee : "+base_salary);
+            console.log("Gross Salary of the Employee : "+g);
+            console.log("Amount of Tax to be deducted from the Salary : "+t);
+            console.log("Net Salary of the Employee : "+n);
+        }
+
+        let name = prompt("Enter the Name of the Employee : ");
+        let days = Number(prompt("Enter the Number of Working Days of the Employee : "));
+        let bonus = Number(prompt("Enter the Monthly Bonus of the Employee : "));
+        let base = Number(prompt("Enter the Base Salary of the Employee : "));
+
+        final(name,base,days,bonus);
+
+    </script>
+</body>
+</html>

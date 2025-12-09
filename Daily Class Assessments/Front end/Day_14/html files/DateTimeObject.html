@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // String --- a sequence of characters which is used to represent the text
+
+        // Date Object --- Built in object that handles date and time
+        let Today = new Date();
+        // console.log(Today.toDateString());
+        document.writeln(Today.toDateString(),"<br>"); // use this so that we do not have to open console evrytime
+
+        // length , toUpperCase , include , slice(start , end) , replace , split
+        console.log("Jaya Aditya".length);
+        console.log("Jaya Aditya".includes("Jaya"));
+        console.log("Jaya,Aditya".split(" "));
+
+        let current = new Date();
+        let specific = new Date(2025,11,10,4,6);
+        document.write(current,"<br>");
+        document.write(specific,"<br>");
+        document.write(today.toLocaleDateString(),"<br>");
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="welcome">Hello User1!</h1>
+    <button id="changeText">Change Text</button>
+    <script>
+        const button = document.getElementById("changeText");
+        button.addEventListener("click",function(){
+            document.getElementById("welcome").innerHTML = "We have learnt HTML Clicked Events";
+        });
+    </script>
+    <h2>
+        getElementById = use to access the html elements by ID 
+        <br>
+        addEventListner = will wait for a click event
+        <br>
+        innerHTML = update the page dynamically without refreshing
+        <br><br>
+        var = it is a function-scope, local variable and can be redefined
+        <br>
+        let = block - level scope and cannot be redefined
+        <br>
+        function validateForm(){<br>
+            var i = 20;<br>
+            let k = 20;   <br>
+        } <br>
+        validateForm() // var cannot be accessed where as let can be outside the function
+        <br><br>
+        Data Types --- Primitive or Non - Primitive
+        <br>
+        Primitive -- num, string,boolean <br>
+        Non - primivitive -- array , functions <br>
+    </h2>
+</body>
+</html>
