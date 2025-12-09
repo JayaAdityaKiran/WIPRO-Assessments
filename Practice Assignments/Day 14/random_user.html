@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random User Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="random-user-page">
+  <div class="container">
+    <h1>Problem 2: Random User Generator</h1>
+    <p>Click the button below to fetch a random user from the API</p>
+    <button onclick="fetchRandomUser()">Get Random User</button>
+    <div id="userInfo"></div>
+  </div>
+
+  <script>
+    function fetchRandomUser() {
+      const userInfoDiv = document.getElementById('userInfo');
+      
+      //  loading state
+      userInfoDiv.innerHTML = '<p class="loading">⏳ Loading random user...</p>';
+      userInfoDiv.classList.add('show');
+
+      //  Random User API
+      fetch('https://randomuser.me/api/')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Extracting user information 
+          const user = data.results[0];
+          const fullName = `${user.name.title} ${user.name.first} ${user.name.last}`;
+          const email = user.email;
+          const profilePic = user.picture.large;
+          const location = `${user.location.city}, ${user.location.country}`;
+          const phone = user.phone;
+          const age = user.dob.age;
+
+          // Displaying user information
+          userInfoDiv.innerHTML = `
+            <img src="${profilePic}" alt="Profile Picture" class="profile-pic">
+            <div class="user-detail"><strong>Name:</strong> ${fullName}</div>
+            <div class="user-detail"><strong>Email:</strong> ${email}</div>
+            <div class="user-detail"><strong>Phone:</strong> ${phone}</div>
+            <div class="user-detail"><strong>Age:</strong> ${age} years</div>
+            <div class="user-detail"><strong>Location:</strong> ${location}</div>
+          `;
+
+          // loggin to console
+          console.log('=== RANDOM USER DATA ===');
+          console.log('Full Name:', fullName);
+          console.log('Email:', email);
+          console.log('Phone:', phone);
+          console.log('Age:', age);
+          console.log('Location:', location);
+          console.log('Profile Picture:', profilePic);
+          console.log('Complete Data:', user);
+        })
+        .catch(error => {
+          console.error('Error fetching random user:', error);
+          userInfoDiv.innerHTML = `<p style="color: red;">❌ Error: ${error.message}</p>`;
+        });
+    }
+  </script>
+</body>
+</html>

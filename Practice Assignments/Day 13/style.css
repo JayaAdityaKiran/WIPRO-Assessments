@@ -1,0 +1,42 @@
+/* Full-width banner */
+.header-banner {
+    background: url("https://static.vecteezy.com/system/resources/previews/006/412/222/non_2x/blue-baner-design-on-white-background-free-vector.jpg") center/cover no-repeat;
+    height: 250px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-banner .overlay {
+    background: rgba(246, 35, 35, 0.45);
+    padding: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .header-banner {
+        height: 180px;
+    }
+
+    .dashboard-card img {
+        height: 180px;
+        object-fit: cover;
+    }
+}

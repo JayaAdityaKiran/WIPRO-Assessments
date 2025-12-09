@@ -1,0 +1,159 @@
+Q.1 Write a program that takes input from the user and creates an object of a class named 'Person'. The 'Person' class should have two member variables: 'name' and 'age'. The program should prompt the user to enter their name and age, create a 'Person' object with the entered values, and then display the name and age of the person.
+
+import java.util.Scanner;
+
+public class Person {
+    String n; // Name
+    int a;    // Age
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        String nameInput = sc.nextLine();
+        int ageInput = sc.nextInt();
+        
+        Person p = new Person();
+        
+        p.n = nameInput;
+        p.a = ageInput;
+        
+        System.out.println("Name: " + p.n);
+        System.out.println("Age: " + p.a);
+        
+        sc.close();
+    }
+}
+
+Q.2 Sum of All Numbers
+Find the sum of the digits using recursion
+
+import java.util.Scanner;
+
+public class Main {
+    
+    public static int sumOfDigits(int n) {
+        // Base case
+        if (n == 0) {
+            return 0;
+        }
+        
+       
+        return (n % 10) + sumOfDigits(n / 10);
+    }
+    
+ 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+      
+        int number = scanner.nextInt();
+        
+       
+        int result = sumOfDigits(number);
+        
+     
+        System.out.println(result);
+        
+        scanner.close();
+    }
+}
+
+Q.3 Create a Java class named Book to represent a book. The class should have the following features:
+
+Instance Variables:
+
+title (String): to store the title of the book.
+author (String): to store the name of the author.
+year (int): to store the publication year of the book.
+
+public class Main {
+    
+    static class Book {
+        String title;
+        String author;
+        int year;
+
+        public Book() {
+            this.title = "Not specified";
+            this.author = "Unknown";
+            this.year = 0;
+        }
+
+        public Book(String title, String author, int year) {
+            this.title = title;
+            this.author = author;
+            this.year = year;
+        }
+
+        void displayInfo() {
+            System.out.println("Title: " + this.title);
+            System.out.println("Author: " + this.author);
+            System.out.println("Year: " + this.year);
+        }
+    }
+
+    public static void main(String[] args) {
+        
+        System.out.println("Book 1:");
+        Book book1 = new Book();
+        book1.displayInfo();
+        
+        System.out.println(); 
+        
+        System.out.println("Book 2:");
+        Book book2 = new Book("Java Programming", "Sakshi", 2024);
+        book2.displayInfo();
+    }
+}
+
+Q.4  Create one default constructor to initialize the fields as default values to calculate volume of the cube and one parameterized constructor to pass parameters and initialize them accordingly. You can pass 3 integer parameters at runtime 
+
+import java.util.Scanner;
+
+public class Main {
+    
+ 
+    static class Cube {
+        
+        double volume;
+        public Cube() {
+            
+            this.volume = 10.0 * 10.0 * 10.0; 
+        }
+
+       
+        public Cube(int length, int width, int height) {
+         
+            this.volume = (double) length * width * height;
+        }
+
+       
+        public void displayVolume() {
+            
+            System.out.println("Volume is " + String.format("%.1f", this.volume));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int l = scanner.nextInt();
+        int w = scanner.nextInt();
+        int h = scanner.nextInt();
+        scanner.close(); 
+
+      
+        System.out.println("Constructor without parameter");
+        
+       
+        Cube defaultCube = new Cube();
+        defaultCube.displayVolume();
+
+    
+        System.out.println("Constructor with parameter");
+        
+       
+        Cube parameterizedCube = new Cube(l, w, h);
+        parameterizedCube.displayVolume();
+    }
+}

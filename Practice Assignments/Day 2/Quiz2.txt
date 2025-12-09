@@ -1,0 +1,132 @@
+Q1.Write a program to find the sum of the elements present inside the array.
+
+
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+       Scanner input = new Scanner(System.in);
+        int size = input.nextInt();  
+        int[] arr = new int[size];
+       
+        for (int i = 0; i < size; i++) {
+            arr[i] = input.nextInt();
+        }
+        
+        sumArray(arr,size);
+        
+    }
+    
+    public static void sumArray(int[] arr,int size)
+    {
+      
+      int sum = 0;
+for (int i = 0; i < size; i++) {
+    sum += arr[i];
+}
+System.out.println("the sum of the elements in the array = " + sum);
+     
+    }
+}
+
+Q.2 Write a program that takes the row & columns input from the user to populate a 2D array and then prints the array.
+
+import java.util.Scanner;
+
+public class MultidimensionalArrayExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+  
+        int cols = scanner.nextInt();
+        
+    
+        int[][] matrix = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+      
+        System.out.println("Sample Output:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+             
+                System.out.print(matrix[i][j]);
+                
+              
+                if (j < cols - 1) {
+                    System.out.print(" ");
+                }
+            }
+          
+            System.out.println(); 
+        }
+        
+    }
+}
+
+
+Q.3 Reverse each word in a string
+
+
+import java.util.*;
+public class Main {
+
+    public static void main(String[] args) {
+ 
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String[] arr = s.split(" ");
+        for(int i = 0; i < arr.length; i++) {
+            StringBuilder sb = new StringBuilder(arr[i]);
+            System.out.print(sb.reverse());
+            if(i != arr.length - 1) System.out.print(" ");
+        }
+    }
+}
+
+
+Q.4 Equal character in string
+You are given a string s. In one move you can change any character to another character.
+
+You have to make a string which consists of the same character. Find the minimum move to do this task.
+
+
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+
+      
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        scanner.close();
+
+        
+        int[] frequency = new int[26];
+        int max_freq = 0;
+
+      
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            int index = ch - 'a';
+            frequency[index]++;
+        }
+
+        for (int count : frequency) {
+            if (count > max_freq) {
+                max_freq = count;
+            }
+        }
+
+       
+        int min_moves = s.length() - max_freq;
+
+   
+        System.out.println(min_moves);
+    }
+}
+
+

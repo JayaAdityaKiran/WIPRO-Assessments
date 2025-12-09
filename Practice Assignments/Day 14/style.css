@@ -1,0 +1,137 @@
+/* ========== FETCH API PAGES - COMMON STYLES ========== */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* ========== PROBLEM 1: EMPLOYEES PAGE ========== */
+.employees-page {
+  background: linear-gradient(120deg, #e3f2fd, #fff3e0);
+}
+
+.employees-page .container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.employees-page button {
+  background: #2196F3;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.employees-page button:hover {
+  background: #1976D2;
+  transform: scale(1.02);
+}
+
+.employees-page .info {
+  margin-top: 20px;
+  padding: 15px;
+  background: #e3f2fd;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+/* ========== PROBLEM 2: RANDOM USER PAGE ========== */
+.random-user-page {
+  background: linear-gradient(120deg, #e1f5fe, #f3e5f5);
+}
+
+.random-user-page .container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.random-user-page button {
+  background: #9C27B0;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+  transition: 0.3s;
+}
+
+.random-user-page button:hover {
+  background: #7B1FA2;
+  transform: scale(1.05);
+}
+
+.random-user-page #userInfo {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f3e5f5;
+  border-radius: 10px;
+  display: none;
+}
+
+.random-user-page #userInfo.show {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.random-user-page .profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid #9C27B0;
+  margin: 20px auto;
+  display: block;
+}
+
+.random-user-page .user-detail {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.random-user-page .user-detail strong {
+  color: #7B1FA2;
+}
+
+.random-user-page .loading {
+  color: #9C27B0;
+  font-weight: bold;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+  
+  .employees-page .container,
+  .random-user-page .container {
+    padding: 20px;
+  }
+}

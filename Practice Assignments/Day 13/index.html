@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard | Spring Flowers School</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(120deg, #90caf9 0%, #fce4ec 100%);
+      min-height: 100vh;
+    }
+    .navbar {
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 2px 8px rgba(33, 150, 243, 0.1);
+    }
+    .header-banner {
+      background: url("https://static.vecteezy.com/system/resources/previews/006/412/222/non_2x/blue-baner-design-on-white-background-free-vector.jpg") center/cover no-repeat;
+      height: 230px;
+      border-radius: 16px;
+      margin: 24px auto 16px auto;
+      max-width: 1100px;
+      box-shadow: 0 4px 16px rgba(33, 150, 243, 0.20);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .header-banner .overlay {
+      background: rgba(36, 105, 224, 0.45);
+      padding: 42px;
+      width: 100%;
+      border-radius: 16px;
+      text-align: center;
+    }
+    .dashboard-card {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+      transition: 0.3s;
+      border: 2px solid #e3f2fd;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeInUp 0.8s;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: none;}
+    }
+    .dashboard-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 28px rgba(33, 150, 243, 0.32);
+      border-color: #90caf9;
+    }
+    .dashboard-card img {
+      height: 160px;
+      object-fit: cover;
+      border-radius: 18px 18px 0 0;
+      background: #e3f2fd;
+    }
+    .btn {
+      font-weight: bold;
+      font-size: 1.07rem;
+      letter-spacing: .8px;
+      box-shadow: 0 2px 4px rgba(33, 150, 243, 0.08);
+    }
+    @media (max-width: 600px) {
+      .header-banner { height: 130px;}
+      .dashboard-card img { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER BANNER -->
+  <div class="header-banner">
+    <div class="overlay">
+      <h1 class="display-4 fw-bold text-white">Spring Flowers School</h1>
+      <p class="lead text-white mb-0">Welcome to the Student Management Portal</p>
+    </div>
+  </div>
+  <!-- STUDENT DASHBOARD -->
+  <div class="container py-5">
+    <h2 class="text-center fw-bold mb-4">Student Dashboard</h2>
+    <div class="row g-4 justify-content-center">
+      <!-- TimeTable Card -->
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="dashboard-card">
+          <img src="https://www.shutterstock.com/image-vector/timetable-vector-icon-style-bicolor-260nw-345720077.jpg" class="card-img-top" alt="Timetable">
+          <div class="p-3 text-center">
+            <h5 class="fw-semibold mb-2">Time Table</h5>
+            <a href="timetable.html" class="btn btn-success w-100">View</a>
+          </div>
+        </div>
+      </div>
+<!-- Profile Card -->
+<div class="col-lg-3 col-md-4 col-sm-6">
+  <div class="dashboard-card">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDGQO5-8CPA9Hzl5_wLkAf6VtlMw52q7IwRw&s" class="card-img-top" alt="Profile">
+    <div class="p-3 text-center">
+      <h5 class="fw-semibold mb-2">Profile</h5>
+      <a href="profile.html" class="btn btn-primary w-100">Open</a>
+    </div>
+  </div>
+</div>
+<!-- Attendance Card -->
+<div class="col-lg-3 col-md-4 col-sm-6">
+  <div class="dashboard-card">
+    <img src="https://www.shutterstock.com/image-vector/attendance-vector-line-icon-260nw-597358928.jpg" class="card-img-top" alt="Attendance">
+    <div class="p-3 text-center">
+      <h5 class="fw-semibold mb-2">Attendance</h5>
+      <a href="attendance.html" class="btn btn-warning w-100">Check</a>
+    </div>
+  </div>
+</div>
+<!-- Homework Card -->
+<div class="col-lg-3 col-md-4 col-sm-6">
+  <div class="dashboard-card">
+    <img src="https://png.pngtree.com/png-vector/20230223/ourmid/pngtree-homework-line-icon-png-image_6616556.png" class="card-img-top" alt="Homework">
+    <div class="p-3 text-center">
+      <h5 class="fw-semibold mb-2">Homework</h5>
+      <a href="homework.html" class="btn btn-info w-100">View</a>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</body>
+</html>

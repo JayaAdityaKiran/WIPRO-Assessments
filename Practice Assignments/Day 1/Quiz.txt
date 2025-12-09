@@ -1,0 +1,102 @@
+Q1. Write a program that takes two numbers as input from the user and performs arithmetic operations on them using the arithmetic operators (sum, difference, product, quotient, remainder) in Java.
+
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 1. Get user input for two numbers
+        // Prompt the user for the input values
+        
+        int num1 = scanner.nextInt();
+
+       
+        int num2 = scanner.nextInt();
+
+        // 2. Perform arithmetic operations
+        int sum = num1 + num2;
+        int difference = num1 - num2;
+        int product = num1 * num2;
+        
+        // 3. Display the results using the required simplified labels
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+        System.out.println("Product: " + product);
+        
+        
+        if (num2 != 0) {
+            int quotient = num1 / num2;
+            int remainder = num1 % num2;
+            
+            System.out.println("Quotient: " + quotient);
+            System.out.println("Remainder: " + remainder);
+        } else {
+            
+            System.out.println("Quotient: 0"); 
+            System.out.println("Remainder: 0"); 
+        }
+
+       
+    }
+}
+
+
+Write a program that takes two boolean values as input and performs logical operations (AND, OR) on them using the logical operators& print the result.
+
+
+import java.util.Scanner;
+
+public class LogicalOperatorsExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Use nextBoolean() to read boolean values directly from input
+       
+        boolean input1 = scanner.nextBoolean();
+
+       
+        boolean input2 = scanner.nextBoolean();
+
+        // TODO: Write your code here
+
+      
+        boolean resultAND = input1 && input2;
+
+     
+        boolean resultOR = input1 || input2;
+
+        
+        System.out.println(resultAND);
+        System.out.println(resultOR);
+
+
+       
+    }
+}
+
+
+Write a program in java to check whether the given number is an even number or not using if else statement.
+
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the console
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user for a number
+        
+        // Read the integer input
+        int number = scanner.nextInt();
+
+        
+        String result = (number % 2 == 0) ? "No is Even" : "No is odd";
+
+        // Display the output
+        System.out.println(result);
+
+      
+       
+    }
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch Employees Data</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="employees-page">
+  <div class="container">
+    <h1>Problem 1: Fetch Employees Data</h1>
+    <p>Click the button to fetch employee data from the API. Check the console (F12) to see the results.</p>
+    <button onclick="fetchEmployees()">Fetch Employees</button>
+    <div class="info" id="status"></div>
+  </div>
+
+  <script>
+    // Function to fetch employees data
+    function fetchEmployees() {
+      const statusDiv = document.getElementById('status');
+      statusDiv.innerHTML = '<p>⏳ Fetching data...</p>';
+
+      // Using Fetch API to get data
+      fetch('https://dummy.restapiexample.com/api/v1/employees')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Display data in console
+          console.log('=== EMPLOYEES DATA ===');
+          console.log(data);
+          
+          if (data.data && Array.isArray(data.data)) {
+            console.log(`Total Employees: ${data.data.length}`);
+            console.log('Employee List:');
+            data.data.forEach((employee, index) => {
+              console.log(`${index + 1}. ${employee.employee_name} (Age: ${employee.employee_age}, Salary: ${employee.employee_salary})`);
+            });
+          }
+
+          statusDiv.innerHTML = `
+            <p>✅ Data fetched successfully!</p>
+            <p><strong>Total Employees:</strong> ${data.data ? data.data.length : 0}</p>
+            <p>Check the browser console (Press F12) to see detailed data.</p>
+          `;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          statusDiv.innerHTML = `<p>❌ Error: ${error.message}</p>`;
+        });
+    }
+  </script>
+</body>
+</html>
